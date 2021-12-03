@@ -1,0 +1,98 @@
+---
+title: "Descriptive_Statistics"
+author: "Debit Paudel"
+date: "12/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+data_iris <- iris
+data_iris
+```
+The dataset contains 150 observations and 5 variables, representing the length and width of the sepal and petal and the species of 150 flowers.
+
+**Minimum and maximum**. 
+
+  We can find using max() and min () functions.
+```{r}
+min(data_iris$Sepal.Width)
+max(data_iris$Sepal.Width)
+```
+The **Range** also  gives minimun and maximum.
+```{r}
+rnge<-range(data_iris$Sepal.Width)
+rnge
+```
+
+It is shown in like a array.we can differentiate using 
+```{r}
+rnge[1]
+```
+
+**Mean** and **Meadian** can be calculated uding mean() function
+```{r}
+mean(data_iris$Sepal.Width)
+median(data_iris$Sepal.Width)
+```
+The **First Quartile**,**Third Quartile** as well *IQR* have functions and can be calculated like below:
+
+```{r}
+quantile(data_iris$Sepal.Width, 0.25)
+
+```
+For the Third quartile we just need to change second parameter as **0.75**
+
+```{r}
+IQR(data_iris$Sepal.Width)
+```
+ **Standard deviation and variance**
+
+ 
+The standard deviation and the variance is calculated with the sd() and var() functions:
+
+```{r}
+sd(data_iris$Sepal.Width)
+var(data_iris$Sepal.Width)
+```
+**Summary**
+Summary will give summary for all the variables by just a function summary()
+
+```{r}
+summary(data_iris)
+```
+
+If we need the descriptive statistics by group we can apply by() function
+```{r}
+by(data_iris, data_iris$Species, summary)
+```
+
+
+Plotting the histogram for the Sepal width 
+
+```{r}
+hist(data_iris$Sepal.Width)
+```
+
+**BoxPlot**. 
+  
+  Box Plots are best because they remove the outliers and ease the descriptive analysis.
+  
+```{r}
+boxplot(data_iris$Sepal.Width ~ data_iris$Species)
+```
+  **Frequency tables with** freq()
+The freq() function produces frequency tables with frequencies, proportions, as well as missing data information.
+
+```{r}
+library(summarytools)
+freq(data_iris$Species)
+```
+
+
+
